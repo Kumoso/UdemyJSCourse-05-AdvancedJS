@@ -1,54 +1,32 @@
-////////////////////
-//////// Passig Functions as Arguments
-
-/*We can pass functions into pother functions.
-For example, the function below is designed to apply a passed function to each element of a passed array.
-Super useful huh!
-*/
+////////////////////////
+////////Functions passing Functions
 
 
-const years = [1991, 1994, 1997, 2000, 2003];
+//This is nothing new. Functions can return functions, whcih can be useful.
 
-function arrayCalc (arr, fn) {
-	const arrayOfResults = [];
-	for (let i = 0; i < arr.length;i++ ) {
-		arrayOfResults.push(fn(arr[i]));
-	};
-	return arrayOfResults;
-};
+const apple = {
+	this.fruit = apple;
+	this.value 
+}
 
-function calculateAge(element) {
-	return 2020 - element;
-};
 
-const ages = arrayCalc(years, calculateAge);
-console.log(ages);
+const fruitTax = (fruit) => {
+	if (fruit = `Apple`) {
+			console.log (`This is an ` + fruit + `. Round init?`);
+			return function(value) {
+				value += value * 0.2};			
+			};
+	else if (fruit = `Banana`) {
+			console.log (`This is a ` + fruit + `. Curvy init?`);
+			return function(value) {
+				value += value * 0.3};			
+			};
 
-/* Note that we don't call calculatAge (we don't write it as calculateAge()).
-This is because we don't want to execute it right away; we're just pointing to it.
-arrayCalc then calls it and executes it within itself as 'fn'.
-Functions used in this way, without parentheses (), are called Callback Functions.
-*/
+	else if (fruit = `Watermelon`) {
+			console.log (`This is a ` + fruit + `. This is the best fruit.`);
+			return function(value) {
+				value += value * 0.5};			
+			};
+		};
 
-//Now, let's create another function and apply it to the array!
-
-function isFullAge(el) {
-	return el > 18;
-};
-
-console.log(arrayCalc(ages, isFullAge));
-
-//And one more!
-
-function maxHeartRate(el) {
-	if (el >= 18 && el <= 81 ) {
-	return Math.round( 206.9 - (0.67 * el));
-	} else {
-		return -1;
-	};
-};
-
-heartRates = arrayCalc (ages, maxHeartRate);
-
-console.log(heartRates);
-
+let taxCalc = 

@@ -24,7 +24,7 @@ function calculateAge(element) {
 const ages = arrayCalc(years, calculateAge);
 console.log(ages);
 
-/* Note that we don't call calculatAge (we don't write it as calculateAge()).
+/* Note that we don't call calculateAge (we don't write it as calculateAge()).
 This is because we don't want to execute it right away; we're just pointing to it.
 arrayCalc then calls it and executes it within itself as 'fn'.
 Functions used in this way, without parentheses (), are called Callback Functions.

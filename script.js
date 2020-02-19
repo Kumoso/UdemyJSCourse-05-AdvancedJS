@@ -1,51 +1,42 @@
-////////////////////////////////////
-// Functions Returning Functions
+////////////////////////////////
+// IIFE: Immediately Invoked Function Expressions
 
-/* A function can return another function. That's all this demonstrates. It's not a fantastic example ^__^
-Functions in JS are 'First Class Functions'. This means that they are, and can be used like, any other objects in JS.
-This allows a lot of flexibility in how they're used.
+/* Functions can be written in a way that makes them invoke immediately, and does not store them in memory.
+This has multiple uses. One is that it can be used to calculate values without returning or storing them in the wider scope;
+this is called a `private variable`' and enhances data privacy.
+It also does not pollute the global context.
+So, this is not for creating a reusable function; it is for creating a disposable function with good data privacy and code hygeine.
 */
 
-function interviewQuestion (job) {
-	if (job === `Designer`) {
-		return function(name) {				//This is an anonymous function; it has no name.
-			console.log(name + `, can you please explain what UX is?`);
-		};
-	 } else if (job === `Teacher`) {
-			return function (name) {
-				console.log(name + `, what are your views on the Polanski teaching method?`);
-			};
-		} else if (job === `Starfleet Captain`) {
-			return function (name) {
-				console.log(name + `, how many years did you serve in Starfleet?`);
-			};
-		} else if (job === `Watcher of the Crystal`) {
-			return function (name) {
-				console.log(`O ${name}, Watcher of the Crystal, what see thee within thine past? What doth thee project upon reality? What universes unfurl behind thine eyes, beyond thine physical forme?`);
-			};
-		};
+// Here's an example; a small 'game' that generates a random number between 0 and 9 then checks whether it's greater than 5.
+//The syntax is an anonymous function expression (not a declaration) in parentheses.
+// The parentheses are what make JS treat this as an expression rather than a declaration,
+// as declarations cannot be created within parentheses.
 
-	};
+(function () {
+	let score = Math.random() * 10;
+	console.log (score >=5);
+}) ();    									// < Note the empty brackets at the end!
+
+// As the function isn't declared in the global scope, neither the function nor its values can be called..
 
 
-/* when the function is returned it will need to be stored somewhere.
-In this example we store these in variables called teacherQuestion, designerQuestion etc.
-*/
+// console.log(score);
 
-const teacherQuestion = interviewQuestion (`Teacher`);
-const designerQuestion = interviewQuestion (`Designer`);
-const captainQuestion = interviewQuestion (`Starfleet Captain`);
 
-teacherQuestion(`John`);
-designerQuestion(`Solari`);
-captainQuestion(`Jean-Luc`);
+// We -can- pass arguments into IIFEs. That's what the brackets at the end are for.
 
-/*It's really a very strange example, because you could just store the individual functions as teacherQuestion, designerQuestion etc.
-and it would be dryer and more readable!
-But it demonstrates the concept. We'll use it in more practical ways later :3
-*/
 
-/* We can also pass values into the stacked function using the folowing syntax. Good to know!
-*/
+(function (goodLuck) {
+	let score = Math.random() * 10;
+	console.log (score >= 5 - goodLuck);
+}) (5);
 
-interviewQuestion('Watcher of the Crystal')('Adric');
+
+(function (badLuck) {
+	let score = Math.random() * 10;
+	console.log (score >= 5 - badLuck);
+}) (-5);
+
+// Passing in arguments from variables is more complex. Worth a look at.
+

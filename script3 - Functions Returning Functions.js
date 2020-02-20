@@ -49,3 +49,20 @@ But it demonstrates the concept. We'll use it in more practical ways later :3
 */
 
 interviewQuestion('Watcher of the Crystal')('Adric');
+
+
+
+//Here's a second example. We'll use this later in the section on Closures.
+
+function retirement (retirementAge) {
+	const msg = ` years left until retirement.`;
+	return function (yearOfBirth) {
+		let age = 2020 - yearOfBirth;
+		console.log ((retirementAge - age) + msg);
+	} 
+};
+
+let retirementUS = retirement(66);
+retirementUS(1990);
+
+retirement(66)(1990);

@@ -1,42 +1,37 @@
-////////////////////////////////
-// IIFE: Immediately Invoked Function Expressions
-
-/* Functions can be written in a way that makes them invoke immediately, and does not store them in memory.
-This has multiple uses. One is that it can be used to calculate values without returning or storing them in the wider scope;
-this is called a `private variable`' and enhances data privacy.
-It also does not pollute the global context.
-So, this is not for creating a reusable function; it is for creating a disposable function with good data privacy and code hygeine.
-*/
-
-// Here's an example; a small 'game' that generates a random number between 0 and 9 then checks whether it's greater than 5.
-//The syntax is an anonymous function expression (not a declaration) in parentheses.
-// The parentheses are what make JS treat this as an expression rather than a declaration,
-// as declarations cannot be created within parentheses.
-
-(function () {
-	let score = Math.random() * 10;
-	console.log (score >=5);
-}) ();    									// < Note the empty brackets at the end!
-
-// As the function isn't declared in the global scope, neither the function nor its values can be called..
+/////////////////////////////
+// Closures
 
 
-// console.log(score);
+function retirement (retirementAge) {
+	const msg = ` years left until retirement.`;
+	return function (yearOfBirth) {
+		let age = 2020 - yearOfBirth;
+		console.log ((retirementAge - age) + msg);
+	} 
+};
 
+let retirementUS = retirement(66);
+retirementUS(1990);
 
-// We -can- pass arguments into IIFEs. That's what the brackets at the end are for.
+retirement(66)(1990);
 
+/* Let's think about what the above code does when the retirement function is called.
 
-(function (goodLuck) {
-	let score = Math.random() * 10;
-	console.log (score >= 5 - goodLuck);
-}) (5);
+>>>  'let retirementUS =  retirement(66)'
 
+The retirement function is called. This function declares msg, and also returns the anonymous function stored in retirement.
+However, note that the variable msg and its argument are not returned! Only the anonymous function is.
 
-(function (badLuck) {
-	let score = Math.random() * 10;
-	console.log (score >= 5 - badLuck);
-}) (-5);
+>>>  'retirementUS(1990)'
 
-// Passing in arguments from variables is more complex. Worth a look at.
+In this line, retirementUS is called. We just defined that; it is the anonymous function from the retirement function.
+The value 1990 is passed into it. It runs just fine.
+BUT WAIT!
+The function retirementUS requires a value for 'msg'.
+But msg only exists within the retirement function, and its execution context closes after it was invoked to define RetirementUS.
 
+SO... How does the function retirementUS get a value for msg? Where did it come from?
+
+Answer: THE CLOSURE! Wooooooo!
+
+Which we will look at next time...

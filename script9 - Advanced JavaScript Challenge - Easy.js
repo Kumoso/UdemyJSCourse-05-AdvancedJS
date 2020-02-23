@@ -30,15 +30,6 @@ c) the correct answer
 7. Assume that this program would be a plug-in for other programmers to use in their code. In that circumstance we would want to avoid polluting their code space; and so the code should be entirely private. Adjust the code to make this so.
 	HINT: We looked at a process precisely for this in a previous lecture.
 
-	---------- ADVANCED CHALLENGES ----------
-
-8. Adjust the code so that once a question is answered a new question loads. 
-
-9. Make it so that the user can type 'exit' into the prompt to end the game.
-
-10. Track the user's score. Show this in the console.
-
-
 Good luck!
 */
 
@@ -67,14 +58,11 @@ const q5 = new Question (5, `Which of these things don't I call my partner?`, [`
 let questions = [q1, q2, q3, q4, q5,];
 
 
-let qNumber = Math.floor(Math.random() * questions.length);
+
+let qNumber = Math.floor(Math.random() * 5);
 let qThis = questions[qNumber];
-let userScore = 0;
 
 function setQuestion () {
-
-	qNumber = Math.floor(Math.random() * questions.length);
-	qThis = questions[qNumber];
 
 	console.log( 
 		`Question ${qThis.qNumber}: ${qThis.qQuestion}`
@@ -88,37 +76,17 @@ function setQuestion () {
 
 
 	
-	let userAnswer = prompt (`Which is the correct answer?
-	Type 'exit' to quit the game.`);
+	let userAnswer = prompt (`Which is the correct answer?`);
 
 
 
 
 
 	if (userAnswer == qThis.qCorrect) {
-		
-		userScore += 1;
-
 		console.log(`
-		Congratulations! You know Dave well!
-		Current score:	${userScore}
-
-		`);
-
-
-
-		setQuestion();
-	
-	} else if (userAnswer === `exit`) { 
-	
+		Congratulations! You know Dave well!`);
 	} else {
-		console.log(`
-		Un-oh! Maybe you don't know Dave as well as you thought you did!
-		Current score:	${userScore}
-
-		`);
-
-		setQuestion();
+		console.log(`Un-oh! Maybe you don't know Dave as well as you thought you did!`);
 	};
 
 };

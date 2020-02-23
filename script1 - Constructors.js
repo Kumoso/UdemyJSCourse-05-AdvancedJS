@@ -1,29 +1,18 @@
-//
+//////////////////////
+// Constructors, aka Factory Functions
 
-/*
-const john = {
-	name: 'John',
-	yearOfBirth: 1989,
-	job: 'Teacher'
-};
+/* Constructors are functions that create objects.
+It passes in parameters, then assigns them to 'this' object as specific variables. 
+And so, it creates a new object with these parameters in the appropriate variables!
+
+CONVENTION: Name function constructors starting with a capital letter. 
+
+You CANNOT use arrow functions for Constructors! You have to use standard function syntax.
 */
 
-/* Constructors, aka Factory Functions
-	Creates objects
- 	CONVENTION: Name function constructors starting with a capital letter.
-	It passes in parameters, then assigns them to 'this' object as specific variables.
-	And so, it creates a new object with these parameters in the appropriate variables!
-*/
-
-/* You CANNOT use arrow functions for Constructors! You have to use standard function syntax.
-const Person = (name, yearOfBirth, job) => {
-		this.name = name;
-		this.yearOfBirth = yearOfBirth;
-		this.job = job;
-};
-*/
 
 //Here's a Constructor!
+
 const Person = function (name, yearOfBirth, job) {
 	this.name = name;
 	this.yearOfBirth = yearOfBirth;

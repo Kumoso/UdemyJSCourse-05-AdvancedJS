@@ -40,3 +40,11 @@ So, this is not for creating a reusable function; it is for creating a disposabl
 
 // Passing in arguments from variables is more complex. Worth a look at.
 
+
+// Here's the summarised format of an iffe ^__^
+
+(function () {
+
+	//your code here
+
+}) ();

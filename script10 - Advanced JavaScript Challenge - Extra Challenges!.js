@@ -85,39 +85,29 @@ function setQuestion () {
 			`${1+i}: ${qThis.qAnswers[i]}`
 		);
 	};
-
-
 	
 	let userAnswer = prompt (`Which is the correct answer?
 	Type 'exit' to quit the game.`);
 
 
-
-
-
 	if (userAnswer == qThis.qCorrect) {
-		
 		userScore += 1;
-
 		console.log(`
 		Congratulations! You know Dave well!
 		Current score:	${userScore}
 
 		`);
-
-
-
 		setQuestion();
 	
 	} else if (userAnswer === `exit`) { 
 	
 	} else {
+	
 		console.log(`
 		Un-oh! Maybe you don't know Dave as well as you thought you did!
 		Current score:	${userScore}
 
 		`);
-
 		setQuestion();
 	};
 

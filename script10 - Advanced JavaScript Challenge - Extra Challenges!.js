@@ -91,7 +91,7 @@ function setQuestion () {
 
 
 	if (userAnswer == qThis.qCorrect) {
-		userScore += 1;
+		userScore ++;
 		console.log(`
 		Congratulations! You know Dave well!
 		Current score:	${userScore}
@@ -116,4 +116,3 @@ function setQuestion () {
 setQuestion ()
 
 }) ();
-
